@@ -11,7 +11,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from diff_engine import process_text, risk_of, unified_diff
 from rules import RuleSchemaError, load_rules
 
-HTML = """<!DOCTYPE html>
+HTML = r"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UpgradeMate · 旧代码升级分析</title>
@@ -136,7 +136,7 @@ function render(d) {
     card(total, '处变更', 'high') + card(r.high, 'high 风险', 'high') +
     card(r.medium, 'medium 风险', 'medium') + card(r.low, 'low 风险', 'low') + '</div>';
   if (!d.changes.length) {
-    $('result').innerHTML = html + '<div class="empty">没有发现需要升级的代码 ✓</div>';
+    $('result').innerHTML = html + '<div class="empty">没有发现需要升级的代码</div>';
     return;
   }
   for (const c of d.changes) {
