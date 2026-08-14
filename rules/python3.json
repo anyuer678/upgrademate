@@ -1,0 +1,92 @@
+[
+  {
+    "id": "py3.print_stmt",
+    "profile": "python3",
+    "priority": "medium",
+    "match": {"file": "*.py", "regex": "^(\\s*)print\\s+(?!\\()(.+)$"},
+    "replace": "\\1print(\\2)",
+    "explain": "Python 3 中 print 为函数，print 语句需加括号",
+    "example_before": "print \"hello\"",
+    "example_after": "print(\"hello\")"
+  },
+  {
+    "id": "py3.xrange",
+    "profile": "python3",
+    "priority": "high",
+    "match": {"file": "*.py", "regex": "\\bxrange\\("},
+    "replace": "range(",
+    "explain": "Python 3 移除 xrange，统一使用 range",
+    "example_before": "for i in xrange(10):",
+    "example_after": "for i in range(10):"
+  },
+  {
+    "id": "py3.urllib2",
+    "profile": "python3",
+    "priority": "high",
+    "match": {"file": "*.py", "regex": "\\burllib2\\b"},
+    "replace": "urllib.request",
+    "explain": "Python 3 合并 urllib2 到 urllib.request",
+    "example_before": "import urllib2",
+    "example_after": "import urllib.request"
+  },
+  {
+    "id": "py3.urlparse",
+    "profile": "python3",
+    "priority": "medium",
+    "match": {"file": "*.py", "regex": "^import urlparse\\s*$"},
+    "replace": "from urllib.parse import urlparse",
+    "explain": "Python 3 将 urlparse 模块并入 urllib.parse",
+    "example_before": "import urlparse",
+    "example_after": "from urllib.parse import urlparse"
+  },
+  {
+    "id": "py3.iteritems",
+    "profile": "python3",
+    "priority": "high",
+    "match": {"file": "*.py", "regex": "\\.iteritems\\("},
+    "replace": ".items(",
+    "explain": "Python 3 移除 dict.iteritems，使用 items",
+    "example_before": "for k, v in d.iteritems():",
+    "example_after": "for k, v in d.items():"
+  },
+  {
+    "id": "py3.basestring",
+    "profile": "python3",
+    "priority": "high",
+    "match": {"file": "*.py", "regex": "\\bbasestring\\b"},
+    "replace": "str",
+    "explain": "Python 3 移除 basestring，使用 str",
+    "example_before": "isinstance(s, basestring)",
+    "example_after": "isinstance(s, str)"
+  },
+  {
+    "id": "py3.cStringIO",
+    "profile": "python3",
+    "priority": "high",
+    "match": {"file": "*.py", "regex": "\\bcStringIO\\b"},
+    "replace": "io",
+    "explain": "Python 3 移除 cStringIO 模块，统一使用 io",
+    "example_before": "from cStringIO import StringIO",
+    "example_after": "from io import StringIO"
+  },
+  {
+    "id": "py3.raw_input",
+    "profile": "python3",
+    "priority": "medium",
+    "match": {"file": "*.py", "regex": "\\braw_input\\("},
+    "replace": "input(",
+    "explain": "Python 3 将 raw_input 更名为 input",
+    "example_before": "name = raw_input(\"name: \")",
+    "example_after": "name = input(\"name: \")"
+  },
+  {
+    "id": "py3.unichr",
+    "profile": "python3",
+    "priority": "medium",
+    "match": {"file": "*.py", "regex": "\\bunichr\\("},
+    "replace": "chr(",
+    "explain": "Python 3 移除 unichr，使用 chr",
+    "example_before": "unichr(0x4F60)",
+    "example_after": "chr(0x4F60)"
+  }
+]

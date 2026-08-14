@@ -1,0 +1,72 @@
+[
+  {
+    "id": "s2s3.javax.servlet",
+    "profile": "springboot3",
+    "priority": "high",
+    "match": {"file": "*.java", "regex": "import javax\\.servlet\\."},
+    "replace": "import jakarta.servlet.",
+    "explain": "Spring Boot 3 将 javax.servlet.* 迁移至 jakarta.servlet.*",
+    "example_before": "import javax.servlet.http.HttpServletRequest;",
+    "example_after": "import jakarta.servlet.http.HttpServletRequest;"
+  },
+  {
+    "id": "s2s3.javax.persistence",
+    "profile": "springboot3",
+    "priority": "high",
+    "match": {"file": "*.java", "regex": "import javax\\.persistence\\."},
+    "replace": "import jakarta.persistence.",
+    "explain": "Spring Boot 3 将 javax.persistence.* 迁移至 jakarta.persistence.*",
+    "example_before": "import javax.persistence.Entity;",
+    "example_after": "import jakarta.persistence.Entity;"
+  },
+  {
+    "id": "s2s3.javax.annotation",
+    "profile": "springboot3",
+    "priority": "high",
+    "match": {"file": "*.java", "regex": "import javax\\.annotation\\."},
+    "replace": "import jakarta.annotation.",
+    "explain": "Spring Boot 3 将 javax.annotation.* 迁移至 jakarta.annotation.*",
+    "example_before": "import javax.annotation.Resource;",
+    "example_after": "import jakarta.annotation.Resource;"
+  },
+  {
+    "id": "s2s3.javax.general",
+    "profile": "springboot3",
+    "priority": "high",
+    "match": {"file": "*.java", "regex": "import javax\\."},
+    "replace": "import jakarta.",
+    "explain": "Spring Boot 3 其余 javax.* 包名统一迁移至 jakarta.*",
+    "example_before": "import javax.validation.Valid;",
+    "example_after": "import jakarta.validation.Valid;"
+  },
+  {
+    "id": "s2s3.spring.redis",
+    "profile": "springboot3",
+    "priority": "medium",
+    "match": {"file": "*.properties", "regex": "spring\\.redis\\."},
+    "replace": "spring.data.redis.",
+    "explain": "Spring Boot 2.4+ 将 spring.redis.* 重命名为 spring.data.redis.*",
+    "example_before": "spring.redis.host=localhost",
+    "example_after": "spring.data.redis.host=localhost"
+  },
+  {
+    "id": "s2s3.logging.file",
+    "profile": "springboot3",
+    "priority": "medium",
+    "match": {"file": "*.properties", "regex": "^logging\\.file="},
+    "replace": "logging.file.name=",
+    "explain": "logging.file 在 Spring Boot 2.2+ 更名为 logging.file.name",
+    "example_before": "logging.file=app.log",
+    "example_after": "logging.file.name=app.log"
+  },
+  {
+    "id": "s2s3.datasource.initialize",
+    "profile": "springboot3",
+    "priority": "medium",
+    "match": {"file": "*.properties", "regex": "spring\\.datasource\\.initialize=true"},
+    "replace": "spring.sql.init.mode=always",
+    "explain": "数据源初始化开关迁移到 spring.sql.init.mode，语义需人工确认",
+    "example_before": "spring.datasource.initialize=true",
+    "example_after": "spring.sql.init.mode=always"
+  }
+]

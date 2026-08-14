@@ -1,0 +1,42 @@
+[
+  {
+    "id": "my8.engine.myisam",
+    "profile": "mysql8",
+    "priority": "medium",
+    "match": {"file": "*.sql", "regex": "ENGINE\\s*=\\s*MyISAM"},
+    "replace": "ENGINE=InnoDB",
+    "explain": "MySQL 8 对 MyISAM 支持弱化，建议迁移 InnoDB",
+    "example_before": "CREATE TABLE t (id INT) ENGINE=MyISAM;",
+    "example_after": "CREATE TABLE t (id INT) ENGINE=InnoDB;"
+  },
+  {
+    "id": "my8.charset.utf8",
+    "profile": "mysql8",
+    "priority": "medium",
+    "match": {"file": "*.sql", "regex": "CHARSET\\s*=\\s*utf8\\b"},
+    "replace": "CHARSET=utf8mb4",
+    "explain": "MySQL 8 默认字符集为 utf8mb4，utf8 仅为其子集",
+    "example_before": "CREATE TABLE t (name VARCHAR(20)) DEFAULT CHARSET=utf8;",
+    "example_after": "CREATE TABLE t (name VARCHAR(20)) DEFAULT CHARSET=utf8mb4;"
+  },
+  {
+    "id": "my8.auth.native_password",
+    "profile": "mysql8",
+    "priority": "medium",
+    "match": {"file": "*.sql", "regex": "mysql_native_password"},
+    "replace": "caching_sha2_password",
+    "explain": "MySQL 8 默认认证插件为 caching_sha2_password",
+    "example_before": "IDENTIFIED WITH mysql_native_password BY 'x'",
+    "example_after": "IDENTIFIED WITH caching_sha2_password BY 'x'"
+  },
+  {
+    "id": "my8.engine.memory",
+    "profile": "mysql8",
+    "priority": "low",
+    "match": {"file": "*.sql", "regex": "ENGINE\\s*=\\s*MEMORY"},
+    "replace": "ENGINE=InnoDB",
+    "explain": "MEMORY 表数据易失且 MySQL 8 建议落盘引擎，需人工确认",
+    "example_before": "CREATE TABLE cache (k INT) ENGINE=MEMORY;",
+    "example_after": "CREATE TABLE cache (k INT) ENGINE=InnoDB;"
+  }
+]
