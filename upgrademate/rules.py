@@ -120,6 +120,6 @@ def apply_rule_to_line(rule: Rule, line: str) -> str | None:
     pat, count = _pattern(rule), rule.options.get("count", 0)
     try:
         new, n = pat.subn(rule.replace, line, count=count)
-    except TimeoutError:  # 3.11+ re 超时兜底，按未命中处理
-        return None
+    except re.error:
+        return None  # 非法模式按未命中处理
     return None if n == 0 else new
