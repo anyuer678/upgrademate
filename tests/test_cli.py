@@ -10,7 +10,7 @@ CLEAN = "public class Clean {}\n"
 
 
 def run(tmp, *argv):
-    return subprocess.run([sys.executable, str(ROOT / "main.py"), *argv],
+    return subprocess.run([sys.executable, "-m", "upgrademate.main", *argv],
                           cwd=tmp, capture_output=True, text=True,
                           encoding="utf-8")
 
@@ -141,7 +141,7 @@ def test_apply_json_mode_and_written(tmp_path):
 
 
 def test_apply_all_failed_exit_2(tmp_path, monkeypatch):
-    import main as m
+    from upgrademate import main as m
     _src(tmp_path)
     monkeypatch.chdir(tmp_path)
 

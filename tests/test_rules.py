@@ -3,8 +3,8 @@ import json
 
 import pytest
 
-import rules
-from rules import (RuleSchemaError, apply_rule_to_line, load_rules,
+from upgrademate import rules
+from upgrademate.rules import (RuleSchemaError, apply_rule_to_line, load_rules,
                    validate_rule)
 
 ALL_RULES = load_rules()

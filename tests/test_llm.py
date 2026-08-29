@@ -1,8 +1,8 @@
 """llm_advisor 离线可用性测试（全程 mock，不触网）。"""
-import llm_advisor
-from diff_engine import FileChange
-from llm_advisor import Advice, LLMConfig, advise
-from rules import Hit, Rule
+from upgrademate import llm_advisor
+from upgrademate.diff_engine import FileChange
+from upgrademate.llm_advisor import Advice, LLMConfig, advise
+from upgrademate.rules import Hit, Rule
 
 
 def _fc():

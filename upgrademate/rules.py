@@ -58,7 +58,20 @@ def validate_rule(rule: dict) -> Rule:
 
 
 def _rules_path() -> Path:
-    return Path(RULES_DIR) if Path(RULES_DIR).exists() else Path(__file__).resolve().parent / RULES_DIR
+    """规则目录解析：cwd/rules（用户自定义覆盖）优先，其次随包分发的内置规则。"""
+    cwd_rules = Path(RULES_DIR)
+    if cwd_rules.exists():
+        return cwd_rules
+    try:
+        from importlib import resources
+        packaged = resources.files(__package__) / RULES_DIR
+        if packaged.is_dir():
+            return Path(str(packaged))
+    except (ModuleNotFoundError, FileNotFoundError):
+        pass
+    raise FileNotFoundError(
+        f"未找到规则目录：{cwd_rules} 与包内置规则均不存在（安装包可能损坏）"
+    )
 
 
 def load_rules(profile: str | None = None) -> list[Rule]:

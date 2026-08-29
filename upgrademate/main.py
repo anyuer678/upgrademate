@@ -5,11 +5,11 @@ import os
 import sys
 from pathlib import Path
 
-from diff_engine import compute_changes, unified_diff, risk_of
-from executor import (WriteError, prepare_backup, apply_changes,
+from .diff_engine import compute_changes, unified_diff, risk_of
+from .executor import (WriteError, prepare_backup, apply_changes,
                       restore_c_from_backup, write_log, load_backup)
-from llm_advisor import LLMConfig, advise
-from rules import load_rules, RuleSchemaError
+from .llm_advisor import LLMConfig, advise
+from .rules import load_rules, RuleSchemaError
 
 for _s in (sys.stdout, sys.stderr):
     try:

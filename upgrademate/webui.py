@@ -8,8 +8,8 @@ import json
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
-from diff_engine import process_text, risk_of, unified_diff
-from rules import RuleSchemaError, load_rules
+from .diff_engine import process_text, risk_of, unified_diff
+from .rules import RuleSchemaError, load_rules
 
 HTML = r"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">

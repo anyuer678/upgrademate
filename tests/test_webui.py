@@ -6,7 +6,7 @@ import urllib.request
 
 import pytest
 
-from webui import Handler, ThreadingHTTPServer
+from upgrademate.webui import Handler, ThreadingHTTPServer
 
 
 @pytest.fixture

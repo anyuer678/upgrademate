@@ -4,9 +4,9 @@ import os
 
 import pytest
 
-import rules
-from diff_engine import FileChange, compute_changes
-from executor import (ApplyReport, WriteError, apply_changes, load_backup,
+from upgrademate import rules
+from upgrademate.diff_engine import FileChange, compute_changes
+from upgrademate.executor import (ApplyReport, WriteError, apply_changes, load_backup,
                       prepare_backup, restore_c_from_backup, upgrade_log,
                       write_log)
 
