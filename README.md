@@ -1,4 +1,6 @@
-# UpgradeMate - 旧代码升级器
+# UpgradeMate - 旧代码升级检查器
+
+> **状态**：`local-tool` · **行级正则检查清单**，非 AST 迁移工具、非完整升级方案
 
 > 规则驱动的机械迁移检查器：内置 **20 条规则**（Spring Boot 3 ×7 / Python 3 ×9 / MySQL 8 ×4）对旧代码做行级正则匹配替换，生成 unified diff 与风险分级报告。
 
