@@ -9,7 +9,7 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-77%20passed-brightgreen)](tests/)
-[![Stars](https://img.shields.io/github/stars/anyuer678/upgrademate)](https://github.com/anyuer678/upgrademate/stargazers)
+[![Stars](https://img.shields.io/github/stars/anyuer678/upgrademate)](https://github.com/anyuer678/upgrademate)
 
 ## Features
 
